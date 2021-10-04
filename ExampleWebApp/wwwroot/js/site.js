@@ -3,6 +3,25 @@
 
 // Write your Javascript code.
 function myFunction() {
-    //document.getElementById("myCheck").click();
     document.getElementById('Text1').value = "Text has been changed";
 }
+
+function myCopyFunc() {
+    let x = document.getElementById('Text2').value;
+    document.getElementById('Text3').value = x;
+}
+
+//Date stuff
+n = new Date();
+y = n.getFullYear();
+m = n.getMonth() + 1;
+d = n.getDate();
+document.getElementById("date").innerHTML = m + "/" + d + "/" + y;
+
+//Random Num
+function getRndInteger() {
+    let MinVal = document.getElementById('MinV').value;
+    let MaxVal = document.getElementById('MaxV').value;
+    return Math.floor(Math.random() * (MaxVal - MinVal + 1)) + MinVal;
+}
+
