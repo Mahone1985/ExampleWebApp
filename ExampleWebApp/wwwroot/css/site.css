@@ -79,3 +79,8 @@ body {
 #Text1 {
     width: 500px;
 }
+
+/*Center align table text*/
+table, td, th {
+    text-align: center;
+}

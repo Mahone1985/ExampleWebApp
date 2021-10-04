@@ -16,24 +16,17 @@
 <div class="text-left">
     <h3>Example Table</h3>
     <p>Here is a basic table:</p>
-
-    <table style="width:100%;">
+    <table style="width:100%;" border="1">
         <tr>
-            <td>Heading 1</td>
-            <td>Heading 2</td>
-            <td>Heading 3</td>
-            <td>Heading 4</td>
+            <th>Heading 1</th>
+            <th>Heading 2</th>
+            <th>Heading 3</th>
+            <th>Heading 4</th>
         </tr>
         <tr>
             <td>Row 1:1</td>
             <td>Row 1:2</td>
             <td>Row 1:3</td>
-            <td>Row 1:4</td>
-        </tr>
-        <tr>
-            <td>Row 2:1</td>
-            <td>Row 2:2</td>
-            <td>Row 2:3</td>
             <td>Row 1:4</td>
         </tr>
     </table>
@@ -44,7 +37,7 @@
 <br />
 
 <div>
-    Example of dropdown menu:
+    <h3>Example of dropdown menu:</h3>
     <br />
     Select item from dropdown:
     <select name="Select1" id="Select1">
@@ -53,9 +46,6 @@
         <option>Option 3</option>
         <option>Option 4</option>
     </select>
-    <br />
-    <br />
-    <br />
 </div>
 
 <br />
@@ -63,11 +53,61 @@
 <br />
 
 <div>
-    Example of button click events:
+    <h3>Example of button click events:</h3>
     <br />
     @*Width is set in site.css*@
     <input id="Text1" type="text" value="Click button to change this text" />
     @*Call myFunction() from JavaScript on button click*@
     <input id="Button1" type="button" value="Change Text" onclick="myFunction()" />
 </div>
+
+<br />
+<hr />
+<br />
+
+<div>
+    <h3>Example of copying from one text box to another:</h3>
+    <br />
+    Type a word...
+    <input id="Text2" type="text" />
+    Output the word here
+    <input id="Text3" type="text" />
+    <input id="Button2" type="button" value="Copy Text" onclick="myCopyFunc()" />
+</div>
+
+<br />
+<hr />
+<br />
+
+<div>
+    <h3>Example of Date.now:</h3>
+    <br />
+    Todays date is: <span id="date"></span>
+</div>
+
+<br />
+<hr />
+<br />
+
+<div>
+    <h3>Example of random number generation:</h3>
+    <br />
+    @*Set min and max for random generation*@
+    Set Min:
+    <input id="MinV" type="number" min="0"/>
+    <br />
+    <br />
+    Set Max:
+    <input id="MaxV" type="number" min="0"/>
+    <br />
+    <br />
+    <input id="Button3" type="button" value="Get a random number" onclick="document.getElementById('rand').innerHTML = getRndInteger()" />
+    <br />
+    <br />
+    Random number: <span id="rand"></span>
+</div>
+
+<br />
+<hr />
+<br />
 
