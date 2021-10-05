@@ -28,64 +28,58 @@ function getRndInteger() {
 
 
 //GRAPH STUFF
+let myChart = undefined;
+
 function graphGraph() {
-    let R = document.getElementById("RedVal").value;
-    let B = document.getElementById("BlueVal").value;
-    let Y = document.getElementById("YellowVal").value;
-    let G = document.getElementById("GreenVal").value;
-    let P = document.getElementById("PurpleVal").value;
-    let O = document.getElementById("OrangeVal").value;
 
-    let ctx = document.getElementById('myChart').getContext('2d');
-    let myChart = new Chart(ctx, {
-        type: 'bar',
-        data: {
-            labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-            datasets: [{
-                label: '# of Votes',
-                //data: [12, 19, 3, 5, 2, 3],
-                data: [R, B, Y, G, P, O],
-                backgroundColor: [
-                    'rgba(255, 99, 132, 0.2)',
-                    'rgba(54, 162, 235, 0.2)',
-                    'rgba(255, 206, 86, 0.2)',
-                    'rgba(75, 192, 192, 0.2)',
-                    'rgba(153, 102, 255, 0.2)',
-                    'rgba(255, 159, 64, 0.2)'
-                ],
-                borderColor: [
-                    'rgba(255, 99, 132, 1)',
-                    'rgba(54, 162, 235, 1)',
-                    'rgba(255, 206, 86, 1)',
-                    'rgba(75, 192, 192, 1)',
-                    'rgba(153, 102, 255, 1)',
-                    'rgba(255, 159, 64, 1)'
-                ],
-                borderWidth: 1
-            }]
-        },
-        options: {
-            scales: {
-                y: {
-                    beginAtZero: true
+        let R = document.getElementById("RedVal").value;
+        let B = document.getElementById("BlueVal").value;
+        let Y = document.getElementById("YellowVal").value;
+        let G = document.getElementById("GreenVal").value;
+        let P = document.getElementById("PurpleVal").value;
+        let O = document.getElementById("OrangeVal").value;
+
+        if (Chart.getChart(myChart) === undefined) {
+            let ctx = document.getElementById('myChart').getContext('2d');
+            myChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+                    datasets: [{
+                        label: '# of Votes',
+                        //data: [12, 19, 3, 5, 2, 3],
+                        data: [R, B, Y, G, P, O],
+                        backgroundColor: [
+                            'rgba(255, 99, 132, 0.2)',
+                            'rgba(54, 162, 235, 0.2)',
+                            'rgba(255, 206, 86, 0.2)',
+                            'rgba(75, 192, 192, 0.2)',
+                            'rgba(153, 102, 255, 0.2)',
+                            'rgba(255, 159, 64, 0.2)'
+                        ],
+                        borderColor: [
+                            'rgba(255, 99, 132, 1)',
+                            'rgba(54, 162, 235, 1)',
+                            'rgba(255, 206, 86, 1)',
+                            'rgba(75, 192, 192, 1)',
+                            'rgba(153, 102, 255, 1)',
+                            'rgba(255, 159, 64, 1)'
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
                 }
-            }
+            });
+        } else {
+            myChart.data.datasets[0].data = [R, B, Y, G, P, O];
+            myChart.update();
         }
-    });
-}
+    }
 
-//UPDATE CHART
-//function addData(chart, label, data) {
-//    chart.data.labels.push(label);
-//    chart.data.datasets.forEach((dataset) => {
-//        dataset.data.push(data);
-//    });
-//    chart.update();
-//}
-
-// My attempt at new data....
-//function updateGraph() {
-//    myChart.config.data = [R, B, Y, G, P, O];
-//    myChart.update();
-//}
 
