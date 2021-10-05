@@ -27,8 +27,6 @@ function getRndInteger() {
 
 
 
-
-
 //GRAPH STUFF
 function graphGraph() {
     let R = document.getElementById("RedVal").value;
@@ -66,12 +64,27 @@ function graphGraph() {
                 borderWidth: 1
             }]
         },
-        options: {
-            scales: {
-                y: {
-                    beginAtZero: true
-                }
-            }
-        }
+        //options: {
+        //    scales: {
+        //        y: {
+        //            beginAtZero: true
+        //        }
+        //    }
+        //}
     });
 }
+
+//UPDATE CHART
+//function addData(chart, label, data) {
+//    chart.data.labels.push(label);
+//    chart.data.datasets.forEach((dataset) => {
+//        dataset.data.push(data);
+//    });
+//    chart.update();
+//}
+
+setInterval(function () {
+    // Update one of the points in the dataset
+    myChart.datasets.data[0].value = Math.random() * 100;
+    myChart.update();
+}, 5000);
