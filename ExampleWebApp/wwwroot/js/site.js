@@ -25,8 +25,6 @@ function getRndInteger() {
     return Math.floor(Math.random() * (MaxVal - MinVal + 1)) + MinVal;
 }
 
-
-
 //GRAPH STUFF
 let myChart = undefined;
 
@@ -81,5 +79,3 @@ function graphGraph() {
             myChart.update();
         }
     }
-
-
