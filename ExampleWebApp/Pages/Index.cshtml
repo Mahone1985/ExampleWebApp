@@ -96,11 +96,11 @@
     <br />
     @*Set min and max for random generation*@
     Set Min:
-    <input id="MinV" type="number" min="0"/>
+    <input id="MinV" type="number" min="0" />
     <br />
     <br />
     Set Max:
-    <input id="MaxV" type="number" min="0"/>
+    <input id="MaxV" type="number" min="0" />
     <br />
     <br />
     <input id="Button3" type="button" value="Get a random number" onclick="document.getElementById('rand').innerHTML = getRndInteger()" />
@@ -113,3 +113,53 @@
 <hr />
 <br />
 
+
+
+@*GRAPH STUFF*@
+@*Import chart.js*@
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<div>
+    <h3>Example Graph:</h3>
+    <br />
+    <table style="width:70%;" border="1" align="center" >
+        <tr>
+            <th>Colour</th>
+            <th>Value</th>
+        </tr>
+        <tr>
+            <td>Red =</td>
+            <td><input id="RedVal" min="0" type="text" /></td>
+        </tr>
+        <tr>
+            <td>Blue =</td>
+            <td><input id="BlueVal" min="0" type="text" /></td>
+        </tr>
+        <tr>
+            <td>Yellow =</td>
+            <td><input id="YellowVal" min="0" type="text" /></td>
+        </tr>
+        <tr>
+            <td>Green =</td>
+            <td><input id="GreenVal" min="0" type="text" /></td>
+        </tr>
+        <tr>
+            <td>Purple =</td>
+            <td><input id="PurpleVal" min="0" type="text" /></td>
+        </tr>
+        <tr>
+            <td>Orange =</td>
+            <td><input id="OrangeVal" min="0" type="text" /></td>
+        </tr>
+    </table>
+</div>
+
+<div>
+    <canvas id="myChart"></canvas>
+</div>
+
+<input id="Button1" type="button" value="Click here to generate graph" onclick="graphGraph()" />
+
+<br />
+<hr />
+<br />
