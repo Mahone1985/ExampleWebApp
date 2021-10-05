@@ -64,13 +64,13 @@ function graphGraph() {
                 borderWidth: 1
             }]
         },
-        //options: {
-        //    scales: {
-        //        y: {
-        //            beginAtZero: true
-        //        }
-        //    }
-        //}
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
     });
 }
 
@@ -83,8 +83,9 @@ function graphGraph() {
 //    chart.update();
 //}
 
-setInterval(function () {
-    // Update one of the points in the dataset
-    myChart.datasets.data[0].value = Math.random() * 100;
-    myChart.update();
-}, 5000);
+// My attempt at new data....
+//function updateGraph() {
+//    myChart.config.data = [R, B, Y, G, P, O];
+//    myChart.update();
+//}
+
