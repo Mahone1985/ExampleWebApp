@@ -26,10 +26,12 @@ function getRndInteger() {
 }
 
 //GRAPH STUFF
+
+//set myChart to undefined
 let myChart = undefined;
 
 function graphGraph() {
-
+        //set values from textbox inputs
         let R = document.getElementById("RedVal").value;
         let B = document.getElementById("BlueVal").value;
         let Y = document.getElementById("YellowVal").value;
@@ -37,6 +39,7 @@ function graphGraph() {
         let P = document.getElementById("PurpleVal").value;
         let O = document.getElementById("OrangeVal").value;
 
+        //If undefined (first use) then build the chart
         if (Chart.getChart(myChart) === undefined) {
             let ctx = document.getElementById('myChart').getContext('2d');
             myChart = new Chart(ctx, {
@@ -74,6 +77,7 @@ function graphGraph() {
                     }
                 }
             });
+        //if its not "undefined" (aka, the canvas is already populated) then "update" the chart as follows 
         } else {
             myChart.data.datasets[0].data = [R, B, Y, G, P, O];
             myChart.update();
