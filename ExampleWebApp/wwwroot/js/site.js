@@ -164,9 +164,6 @@ function graphGraph() {
     }
 }
 
-//comment
-
-
 ////CRYPTO GRAPH
 //let myChart = undefined;
 
