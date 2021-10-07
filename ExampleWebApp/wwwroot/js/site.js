@@ -121,9 +121,6 @@ var intervalId = window.setInterval(function () {
 
 
 
-
-
-
 //CRYPTO GRAPH TO OUTPUT ROLLING PRICE OF BTC/GBP
 let myChart = undefined;
 
