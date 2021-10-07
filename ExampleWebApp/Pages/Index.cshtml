@@ -153,21 +153,32 @@
 </div>
 
 <div>
-    <input id="graphGraph" type="button" value="graphGraph" onclick="graphGraph()" />
-    <canvas id="myChart"></canvas>
+    <input id="barGraphExample" type="button" value="barGraph" onclick="barGraphExample()" />
+    <canvas id="barChart"></canvas>
 </div>
 
 <br />
 <hr />
 <br />
 
+@*<div>
+    <input id="graphGraph" type="button" value="graphGraph" onclick="graphGraph()" />
+    <canvas id="myChart"></canvas>
+</div>*@
+
+<br />
+<hr />
+<br />
+
 <div>
+    <h2>Bitcoin live price graph</h2>
+    <hr />
+    <canvas id="myChart"></canvas>
     <h3>BITCOIN API CALL:</h3>
     <br />
-    @*<input id="BTCbutton" type="button" value="BIT(CH)COINS" onclick="BTC()" />*@
-
     @*Updates every 5 seconds using interval*@
     The current spot price of BTC/GBP is = <input id="BTC_box" type="text" />
+    cnt = <input id="cnt-box" type="text" />
 </div>
 
 <br />
