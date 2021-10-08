@@ -12,11 +12,20 @@ function myCopyFunc() {
 }
 
 //Date stuff
+//n = new Date();
+//y = n.getFullYear();
+//m = n.getMonth() + 1;
+//d = n.getDate();
+//document.getElementById("date").innerHTML = m + "/" + d + "/" + y;
 n = new Date();
 y = n.getFullYear();
 m = n.getMonth() + 1;
+if (m <= 9)
+    m = '0' + m;
 d = n.getDate();
-document.getElementById("date").innerHTML = m + "/" + d + "/" + y;
+if (d <= 9)
+    d = '0' + d;
+document.getElementById("date").innerHTML = d + "/" + m + "/" + y;
 
 //Random Num
 function getRndInteger() {
@@ -25,12 +34,13 @@ function getRndInteger() {
     return Math.floor(Math.random() * (MaxVal - MinVal + 1)) + MinVal;
 }
 
+//***********************************************
 //GRAPH STUFF
+//***********************************************
+//set barChart to undefined
+let barChart = undefined;
 
-//set myChart to undefined
-let myChart = undefined;
-
-function graphGraph() {
+function barGraphExample() {
         //set values from textbox inputs
         let R = document.getElementById("RedVal").value;
         let B = document.getElementById("BlueVal").value;
@@ -40,9 +50,9 @@ function graphGraph() {
         let O = document.getElementById("OrangeVal").value;
 
         //If undefined (first use) then build the chart
-        if (Chart.getChart(myChart) === undefined) {
-            let ctx = document.getElementById('myChart').getContext('2d');
-            myChart = new Chart(ctx, {
+        if (Chart.getChart(barChart) === undefined) {
+            let ctx = document.getElementById('barChart').getContext('2d');
+            barChart = new Chart(ctx, {
                 type: 'bar',
                 data: {
                     labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
@@ -79,7 +89,70 @@ function graphGraph() {
             });
         //if its not "undefined" (aka, the canvas is already populated) then "update" the chart as follows 
         } else {
-            myChart.data.datasets[0].data = [R, B, Y, G, P, O];
-            myChart.update();
+            barChart.data.datasets[0].data = [R, B, Y, G, P, O];
+            barChart.update();
         }
     }
+
+
+
+//***********************************************
+//CRYPTO GRAPH TO OUTPUT ROLLING PRICE OF BTC/GBP
+//***********************************************
+
+//COINBASE API CALL
+var apiUrl = 'https://api.coinbase.com/v2/prices/BTC-GBP/sell';
+let amountbtc;
+
+function update() {
+    fetch(apiUrl).then(response => {
+            return response.json();
+        }).then(JSONResponseObject => {
+            amountbtc = JSONResponseObject.data.amount;
+            document.getElementById('BTC_box').value = amountbtc;
+            graphGraph();
+        });
+}
+
+//Call update straight away to pain canvas on page load and then call it as an interval
+update();
+setInterval(update, 20000); // 20000 = 20 seconds
+
+//GRAPH THE OUTPUTS
+let myChart = undefined;
+let cnt = 0;
+document.getElementById('cnt-box').value = cnt;
+function graphGraph() {
+
+    //If undefined (first use) then build the chart
+    if (Chart.getChart(myChart) === undefined) {
+        let ctx = document.getElementById('myChart').getContext('2d');
+        myChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: [''],
+                datasets: [{
+                    label: 'My First Dataset',
+                    data: [amountbtc],
+                    fill: false,
+                    borderColor: 'rgb(75, 192, 192)',
+                    tension: 0.2
+                }]
+            },
+        });
+        //if its not "undefined" (aka, the canvas is already populated) then "update" the chart as follows 
+        cnt++;
+        document.getElementById('cnt-box').value = cnt;
+    } else {
+        //retain 20 data points and then start to remove the 1st each iteration
+        if (cnt >= 20) {
+            myChart.data.labels.shift();
+            myChart.data.datasets[0].data.shift();
+        }
+        myChart.data.labels.push('');
+        myChart.data.datasets[0].data.push(amountbtc);
+        myChart.update();
+        cnt++;
+        document.getElementById('cnt-box').value = cnt;
+    }
+}
