@@ -101,8 +101,8 @@ function barGraphExample() {
 //***********************************************
 
 //COINBASE API CALL
-var apiUrl = 'https://api.coinbase.com/v2/prices/BTC-GBP/sell';
-let amountbtc;
+var apiUrl = 'https://api.coinbase.com/v2/prices/BTC-GBP/spot';
+var amountbtc;
 
 function update() {
     fetch(apiUrl).then(response => {
@@ -113,9 +113,22 @@ function update() {
             graphGraph();
         });
 }
+//COINBASE API CALL for yesterday
+var apiUrlYest = 'https://api.coinbase.com/v2/prices/BTC-GBP/spot?date=2021-10-11';
+var amountbtcYest;
+
+function update2() {
+    fetch(apiUrlYest).then(response2 => {
+        return response2.json();
+    }).then(JSONResponseObject2 => {
+        amountbtcYest = JSONResponseObject2.data.amount;
+    });
+}
 
 //Call update straight away to pain canvas on page load and then call it as an interval
 update();
+update2();
+
 setInterval(update, 20000); // 20000 = 20 seconds
 
 //GRAPH THE OUTPUTS
@@ -155,4 +168,12 @@ function graphGraph() {
         cnt++;
         document.getElementById('cnt-box').value = cnt;
     }
+}
+
+
+
+function priceMove() {
+    let ratio = parseFloat(amountbtc) / parseFloat(amountbtcYest);
+    let percentDifference = (ratio * 100) - 100;
+    document.querySelector("#priceMoveOutput").textContent = "In the past 24 hours, the market is " + (percentDifference > 0 ? "up" : "down") + " " + Math.abs(percentDifference).toFixed(2) + "%.";
 }
