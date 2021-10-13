@@ -19,6 +19,11 @@ namespace ExampleWebApp.Pages
 
         public void OnGet()
         {
+            string dateTime = DateTime.Now.ToShortDateString();
+            ViewData["TimeStamp"] = dateTime;
+            
+            var x = "read this variable";
+            ViewData["readVar"] = x;
         }
     }
 }

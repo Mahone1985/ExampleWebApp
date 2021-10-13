@@ -19,7 +19,8 @@ namespace ExampleWebApp.Pages
 
         public void OnGet()
         {
-           
+            var x = "This is my homepage variable";
+            ViewData["homepageVar"] = x;
         }
     }
 }
